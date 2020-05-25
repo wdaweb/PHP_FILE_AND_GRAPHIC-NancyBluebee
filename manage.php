@@ -23,8 +23,6 @@ include_once "base.php";
 
 
 <form action="save_file.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="upload" id="img"><br>
-    <input type="text" name="note"><br>
     檔案:<input type="file" name="upload" id="img"><br>
     說明:<input type="text" name="note"><br>
     相簿:<input type="text" name="album"><br>

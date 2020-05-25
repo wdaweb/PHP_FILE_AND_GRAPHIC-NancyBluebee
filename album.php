@@ -15,10 +15,10 @@ img{
 .frame{
     display:inline-flex;
     width:150px;
-    border:2px solid #5ee;
+    border:2px solid gold;
     margin:10px;
     box-shadow:1px 1px 5px #990;
-    height:150px;
+    height:200px;
     vertical-align:middle;
     align-items:center;
     padding:0 10px;
