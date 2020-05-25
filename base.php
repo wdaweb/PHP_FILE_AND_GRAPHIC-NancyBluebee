@@ -20,8 +20,14 @@ function all($table,...$arg){
         $sql=$sql . $arg[1];
     }
 
+    if(!empty($arg[2])){
+        
+        return $pdo->query($sql)->fetchAll($arg[2]);
+    }else{
+        return $pdo->query($sql)->fetchAll();
 
-    return $pdo->query($sql)->fetchAll();
+    }
+
 
 }
 

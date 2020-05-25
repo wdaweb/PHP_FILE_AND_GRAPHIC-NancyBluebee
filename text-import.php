@@ -22,12 +22,55 @@
 <body>
 <h1 class="header">文字檔案匯入練習</h1>
 <!---建立檔案上傳機制--->
+<form action="parse_file.php" method="post" enctype="multipart/form-data" style="margin:auto; width:300px; border:1px solid black;">
 
+    <input type="file" name="doc">
+
+    <input type="submit" value="匯入">
+</form>
 
 
 <!----讀出匯入完成的資料----->
 
+<?php
+include_once "base.php";
+$todo=all("to_do","","",PDO::FETCH_ASSOC);
 
+
+?>
+<table algin="center">
+    <tr>
+        <td>系統編號</td>
+        <td>活動主題</td>
+        <td>內容說明</td>
+        <td>建立時間</td>
+        <td>截止日期</td>
+    </tr>
+    <?php
+    foreach($todo as $t){
+    ?>
+    <tr>
+        <td><?=$t['id'];?></td>
+        <td><?=$t['subject'];?></td>
+        <td><?=$t['memo'];?></td>
+        <td><?=$t['data_begin'];?></td>
+        <td><?=$t['deadline'];?></td>
+    </tr>
+    <?php
+    }
+    ?>
+</table>
+<?php
+
+    $newfile=fopen('todolist.txt','w+');
+    foreach($todo as $t){
+        fwrite($newfile,implode(',',$t)."\n");
+
+    }
+    fclose($newfile);
+?>
+
+<a href="todolist.txt" download>下載</a>
 
 </body>
 </html>
